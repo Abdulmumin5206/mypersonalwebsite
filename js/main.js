@@ -1,32 +1,43 @@
 document.addEventListener("DOMContentLoaded", function () {
+    // ✅ Select elements
     const logo = document.querySelector("#main-header .logo img");
     const navLinks = document.querySelectorAll("#main-header nav ul li a");
-    const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+    const toggleSwitch = document.querySelector('#theme-checkbox');
+    const themeIcon = document.querySelector(".theme-toggle img");
 
-    // ✅ Check for saved theme preference
-    const currentTheme = localStorage.getItem('theme') || 
-                        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-    
-    // ✅ Apply the saved theme or system preference
-    if (currentTheme === 'dark') {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        toggleSwitch.checked = true;
-    }
-
-    // ✅ Function to switch theme
-    function switchTheme(e) {
-        if (e.target.checked) {
-            document.documentElement.setAttribute('data-theme', 'dark');
-            localStorage.setItem('theme', 'dark');
-        } else {
-            document.documentElement.setAttribute('data-theme', 'light');
-            localStorage.setItem('theme', 'light');
+    // ✅ Function to update logo based on theme
+    function updateThemeVisuals(theme) {
+        if (logo) {
+            logo.src = theme === 'dark' ? 'images/logo_white.svg' : 'images/logo.svg';
+        }
+        if (themeIcon) {
+            themeIcon.src = theme === 'dark' ? 'icons/dark.svg' : 'icons/light.svg';
         }
     }
 
-    // ✅ Event listener for theme switch
+    // ✅ Get saved theme or use system default
+    const currentTheme = localStorage.getItem('theme') || 
+                        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+    // ✅ Apply the theme and update visuals
+    function applyTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+        updateThemeVisuals(theme);
+    }
+
+    if (currentTheme === 'dark') {
+        applyTheme('dark');
+        if (toggleSwitch) toggleSwitch.checked = true;
+    } else {
+        applyTheme('light');
+    }
+
+    // ✅ Toggle theme on switch change
     if (toggleSwitch) {
-        toggleSwitch.addEventListener('change', switchTheme, false);
+        toggleSwitch.addEventListener('change', function () {
+            applyTheme(this.checked ? 'dark' : 'light');
+        });
     }
 
     // ✅ Smooth hover effect for the logo
