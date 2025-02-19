@@ -1,0 +1,152 @@
+/* About Page Specific Styles */
+.about-container {
+    padding: 20px;
+    margin-top: -10px;
+    text-align: center;
+    background-color: var(--background-color);
+    transition: background-color 0.3s ease;
+}
+
+/* Profile Section */
+.profile-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Profile Image */
+.profile-image {
+    flex: 0 0 400px;
+}
+
+.profile-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.2s ease-out;
+}
+
+.profile-image img:hover {
+    transform: scale(1.05);
+}
+
+/* Profile Content */
+.profile-content {
+    flex: 1;
+    text-align: left;
+}
+
+.typing-text {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--text-color);
+    margin-bottom: 20px;
+    min-height: 60px;
+}
+
+.profile-description {
+    color: var(--text-color);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease forwards 1s;
+}
+
+.profile-description p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+    font-size: 18px;
+}
+
+/* Timeline Section */
+.timeline {
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+.timeline h2 {
+    color: var(--text-color);
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+
+.timeline-event {
+    background-color: var(--background-color);
+    border-left: 3px solid var(--text-color);
+    margin-bottom: 30px;
+    padding: 20px;
+    position: relative;
+    transition: transform 0.2s ease-out;
+}
+
+.timeline-event:hover {
+    transform: translateX(10px);
+}
+
+.timeline-content h3 {
+    color: var(--text-color);
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.timeline-content p {
+    color: var(--text-color);
+    margin-bottom: 10px;
+}
+
+.timeline-content .date {
+    color: var(--text-color);
+    opacity: 0.7;
+    font-size: 0.9rem;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mobile Responsiveness */
+@media screen and (max-width: 768px) {
+    .profile-section {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .profile-image {
+        flex: 0 0 auto;
+        max-width: 300px;
+    }
+
+    .profile-content {
+        text-align: center;
+    }
+
+    .typing-text {
+        font-size: 2rem;
+    }
+
+    .timeline {
+        padding: 20px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .profile-image {
+        max-width: 250px;
+    }
+
+    .typing-text {
+        font-size: 1.8rem;
+    }
+}

@@ -2,9 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- Update the viewport tag in your head section to ensure proper scaling -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>About Me</title>
     <!-- Prevent flash of wrong theme -->
     <script>
@@ -17,11 +15,12 @@
             document.documentElement.setAttribute('data-theme', 'light');
         }
     </script>
-       <link rel="stylesheet" href="css/main.css"> 
-    <script src="js/main.js" defer></script> 
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/about.css">
+    <script src="js/main.js" defer></script>
+    <script src="js/about.js" defer></script>
 </head>
 <body>
-
     <header id="main-header">
         <div class="logo">
             <a href="index.html">
@@ -45,10 +44,31 @@
         </nav>
     </header>
 
-    <main>
-        <h1>About Me</h1>
-        <p>This page will contain information about me.</p>
+    <main class="about-container">
+        <section class="profile-section">
+            <div class="profile-image">
+                <img src="images/profile.jpg" alt="Abdulmumin">
+            </div>
+            <div class="profile-content">
+                <div id="typing-text" class="typing-text"></div>
+                <div class="profile-description">
+                    <p><strong>Born 15 December 2000</strong> in Tashkent, Uzbekistan.</p>
+                    <p>I'm a passionate Mechatronics Engineer currently working at FABLAB (CFYI). My journey in engineering began at Karabük University, where I developed a strong foundation in both mechanical and electronic systems.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="timeline">
+            <h2>My Journey</h2>
+            <div class="timeline-event">
+                <div class="timeline-content">
+                    <h3>⚙️ Engineer at FABLAB (CFYI)</h3>
+                    <p>Currently working as a Mechatronics Engineer at FABLAB under CFYI.</p>
+                    <span class="date">Present</span>
+                </div>
+            </div>
+            <!-- Add other timeline events -->
+        </section>
     </main>
-    
 </body>
 </html>
