@@ -2,10 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- Update the viewport tag in your head section to ensure proper scaling -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
-    <title>About Me</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Contact Me</title>
+    
     <!-- Prevent flash of wrong theme -->
     <script>
         const savedTheme = localStorage.getItem('theme');
@@ -17,8 +16,11 @@
             document.documentElement.setAttribute('data-theme', 'light');
         }
     </script>
-      <link rel="stylesheet" href="css/main.css"> 
+
+    <link rel="stylesheet" href="css/main.css"> 
+    <link rel="stylesheet" href="css/contact.css"> 
     <script src="js/main.js" defer></script> 
+    <script src="js/contact.js" defer></script> 
 </head>
 <body>
 
@@ -46,9 +48,69 @@
     </header>
 
     <main>
-        <h1>Contact</h1>
-        <p>This page will contain information about me.</p>
+        <h1>Contact Me</h1>
+        <p>Feel free to reach out through any of the following methods:</p>
+
+        <div class="contact-container">
+            <!-- Left Side: Contact Information -->
+            <div class="contact-info">
+                <h2>📧 Email</h2>
+                <p><a href="mailto:your@email.com">your@email.com</a></p>
+
+                <h2>📱 Telegram</h2>
+                <p><a href="https://t.me/yourusername">@yourusername</a></p>
+
+                <!-- Social Media Icons -->
+                <h2>🔗 Connect with Me</h2>
+                <div class="social-icons">
+                    <a href="https://linkedin.com/in/yourprofile" target="_blank"><img src="icons/linkedin.svg" alt="LinkedIn"></a>
+                    <a href="https://instagram.com/yourusername" target="_blank"><img src="icons/instagram.svg" alt="Instagram"></a>
+                    <a href="https://twitter.com/yourusername" target="_blank"><img src="icons/twitter.svg" alt="Twitter"></a>
+                </div>
+            </div>
+
+            <!-- Right Side: Contact Form -->
+            <div class="contact-form">
+                <h2>📩 Send Me a Message</h2>
+                <form id="contactForm">
+                    <input type="text" id="name" placeholder="Your Name" required>
+                    <input type="email" id="email" placeholder="Your Email" required>
+                    <textarea id="message" placeholder="Your Message" required></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+                
+                <p id="responseMessage"></p>
+                
+                <script>
+                document.getElementById("contactForm").addEventListener("submit", async function (event) {
+                    event.preventDefault();
+                
+                    const name = document.getElementById("name").value.trim();
+                    const email = document.getElementById("email").value.trim();
+                    const message = document.getElementById("message").value.trim();
+                
+                    if (!name || !email || !message) {
+                        alert("Please fill in all fields.");
+                        return;
+                    }
+                
+                    const response = await fetch("http://localhost:5000/send-email", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ name, email, message }),
+                    });
+                
+                    const data = await response.json();
+                    document.getElementById("responseMessage").textContent = data.success || data.error;
+                
+                    if (response.ok) {
+                        document.getElementById("contactForm").reset();
+                    }
+                });
+                </script>
+            </div>
+        </div>
     </main>
-    
+    <script src="js/contact.js"></script>
 </body>
 </html>
