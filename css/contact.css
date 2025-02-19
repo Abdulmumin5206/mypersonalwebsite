@@ -121,3 +121,112 @@
         gap: 30px;
     }
 }
+
+
+/* Popup Styles */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.popup-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.popup {
+    background-color: white;
+    border-radius: 8px;
+    padding: 25px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.popup p {
+    margin: 15px 0;
+    font-size: 18px;
+}
+
+.close-popup {
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+.close-popup:hover {
+    background-color: #333;
+}
+
+/* Loading Spinner */
+.loading-icon {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    border-top-color: black;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Success Icon */
+.success-icon {
+    width: 60px;
+    height: 60px;
+    background-color: #4CAF50;
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    margin: 0 auto 15px;
+}
+
+/* Dark Mode Support for Popup */
+[data-theme="dark"] .popup {
+    background-color: #1a1a1a;
+    color: white;
+}
+
+[data-theme="dark"] .close-popup {
+    background-color: white;
+    color: black;
+}
+
+[data-theme="dark"] .close-popup:hover {
+    background-color: #ddd;
+}
+
+[data-theme="dark"] .spinner {
+    border: 4px solid rgba(255, 255, 255, 0.1);
+    border-top-color: white;
+}

@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="css/main.css"> 
     <link rel="stylesheet" href="css/contact.css"> 
     <script src="js/main.js" defer></script> 
-    <script src="js/contact.js" defer></script> 
+    <script src="js/contact.js" defer></script>
 </head>
 <body>
 
@@ -80,37 +80,9 @@
                 </form>
                 
                 <p id="responseMessage"></p>
-                
-                <script>
-                document.getElementById("contactForm").addEventListener("submit", async function (event) {
-                    event.preventDefault();
-                
-                    const name = document.getElementById("name").value.trim();
-                    const email = document.getElementById("email").value.trim();
-                    const message = document.getElementById("message").value.trim();
-                
-                    if (!name || !email || !message) {
-                        alert("Please fill in all fields.");
-                        return;
-                    }
-                
-                    const response = await fetch("http://localhost:5000/send-email", {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({ name, email, message }),
-                    });
-                
-                    const data = await response.json();
-                    document.getElementById("responseMessage").textContent = data.success || data.error;
-                
-                    if (response.ok) {
-                        document.getElementById("contactForm").reset();
-                    }
-                });
-                </script>
             </div>
         </div>
     </main>
-    <script src="js/contact.js"></script>
+    <!-- No duplicate scripts here - removed the second contact.js reference -->
 </body>
 </html>
