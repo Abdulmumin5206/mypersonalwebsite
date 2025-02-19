@@ -130,3 +130,87 @@ html[data-theme="dark"] .theme-toggle .moon-icon {
 html[data-theme="dark"] .theme-toggle .sun-icon {
     display: block;
 }
+
+/* ======== RESPONSIVE STYLES ======== */
+@media screen and (max-width: 768px) {
+    /* Header adjustments for mobile */
+    #main-header {
+        flex-direction: column;
+        padding: 10px 20px;
+        margin-top: 0;
+    }
+    
+    /* Smaller logo on mobile */
+    #main-header .logo img {
+        height: 80px;
+    }
+    
+    /* Navigation menu for mobile */
+    #main-header nav {
+        width: 100%;
+        margin-top: 10px;
+    }
+    
+    #main-header nav ul {
+        flex-direction: column;
+        gap: 15px;
+        padding: 10px 0;
+    }
+    
+    /* Create a hamburger menu for mobile */
+    .mobile-menu-toggle {
+        display: block;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        cursor: pointer;
+    }
+    
+    .mobile-menu-toggle span {
+        display: block;
+        width: 25px;
+        height: 3px;
+        margin: 5px 0;
+        background-color: var(--text-color);
+        transition: all 0.3s ease;
+    }
+    
+    /* Hide desktop nav by default on mobile */
+    .nav-menu {
+        display: none;
+        width: 100%;
+        padding-top: 10px;
+    }
+    
+    /* Show nav when active */
+    .nav-menu.active {
+        display: block;
+    }
+    
+    /* Main content adjustments for mobile */
+    main {
+        padding: 15px;
+        margin-top: 0;
+    }
+    
+    h1 {
+        font-size: 24px;
+        margin-bottom: 15px;
+    }
+    
+    p {
+        font-size: 16px;
+        line-height: 1.4;
+    }
+}
+
+/* Additional small screen adjustments */
+@media screen and (max-width: 480px) {
+    #main-header {
+        padding: 10px;
+    }
+    
+    #main-header .logo img {
+        height: 60px;
+    }
+}

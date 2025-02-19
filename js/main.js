@@ -66,3 +66,69 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+
+
+// Add this to your existing main.js file
+document.addEventListener("DOMContentLoaded", function () {
+    // Create hamburger menu element
+    const header = document.getElementById('main-header');
+    const nav = document.querySelector('#main-header nav');
+    const navUl = document.querySelector('#main-header nav ul');
+    
+    // Add mobile menu classes
+    navUl.classList.add('nav-menu');
+    
+    // Create mobile menu toggle button
+    const mobileMenuToggle = document.createElement('div');
+    mobileMenuToggle.className = 'mobile-menu-toggle';
+    mobileMenuToggle.innerHTML = `
+        <span></span>
+        <span></span>
+        <span></span>
+    `;
+    
+    // Insert toggle button
+    header.insertBefore(mobileMenuToggle, nav);
+    
+    // Toggle menu function
+    mobileMenuToggle.addEventListener('click', function() {
+        navUl.classList.toggle('active');
+        
+        // Animate hamburger to X
+        const spans = this.querySelectorAll('span');
+        if (navUl.classList.contains('active')) {
+            spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+            spans[1].style.opacity = '0';
+            spans[2].style.transform = 'rotate(-45deg) translate(7px, -7px)';
+        } else {
+            spans[0].style.transform = 'none';
+            spans[1].style.opacity = '1';
+            spans[2].style.transform = 'none';
+        }
+    });
+    
+    // Close menu when clicking a link
+    const navLinks = document.querySelectorAll('#main-header nav ul li a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            if (window.innerWidth <= 768) {
+                navUl.classList.remove('active');
+                const spans = document.querySelectorAll('.mobile-menu-toggle span');
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            }
+        });
+    });
+    
+    // Close menu on window resize if wider than mobile
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768) {
+            navUl.classList.remove('active');
+            const spans = document.querySelectorAll('.mobile-menu-toggle span');
+            spans[0].style.transform = 'none';
+            spans[1].style.opacity = '1';
+            spans[2].style.transform = 'none';
+        }
+    });
+});
