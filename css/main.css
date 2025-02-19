@@ -1,0 +1,157 @@
+/* ======== RESET DEFAULT STYLES ======== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ======== COLOR VARIABLES ======== */
+:root {
+    --background-color: white;
+    --text-color: black;
+    --header-bg: white;
+   
+}
+
+[data-theme="dark"] {
+    --background-color: #121212;
+    --text-color: #e0e0e0;
+    --header-bg:  #121212;
+}
+
+/* Ensure No Extra Space at the Top */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ======== HEADER & MAIN STYLES ======== */
+#main-header,
+main {
+    padding: 20px;
+    text-align: center;
+    margin-top: -30px;
+}
+
+/* ======== HEADER STYLES ======== */
+#main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 80px;
+    width: 100%;
+    top: 0;
+    position: relative;
+    z-index: 1000;
+    background-color: var(--header-bg);
+    box-shadow: none;
+    transition: background-color 0.3s ease;
+}
+
+/* LOGO STYLES */
+#main-header .logo img {
+    height: 150px;
+    width: auto;
+    transition: none;
+}
+
+/* NAVIGATION SECTION - Contains nav and toggle */
+.nav-section {
+    display: flex;
+    align-items: center;
+}
+
+/* NAVIGATION MENU */
+#main-header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+/* Each menu item */
+#main-header nav ul li {
+    display: inline;
+}
+
+#main-header nav ul li a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    display: inline-block;
+    transition: none;
+}
+
+/* ======== MAIN SECTION STYLES ======== */
+main {
+    padding: 20px;
+    text-align: center;
+    margin-top: -10px;
+    background-color: var(--background-color);
+    transition: background-color 0.3s ease;
+}
+
+/* ======== DARK MODE TOGGLE STYLES ======== */
+.theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+    margin-left: 30px;
+}
+
+.theme-switch-wrapper em {
+    display: none; /* Hide the text label */
+}
+
+.theme-switch {
+    display: inline-block;
+    height: 24px;
+    position: relative;
+    width: 50px;
+}
+
+.theme-switch input {
+    display: none;
+}
+
+.slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+}
+
+.slider:before {
+    background-color: #fff;
+    bottom: 4px;
+    content: "";
+    height: 16px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 16px;
+}
+
+input:checked + .slider {
+    background-color: #66bb6a;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
