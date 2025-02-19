@@ -1,9 +1,26 @@
+// Complete replacement for your main.js file
 document.addEventListener("DOMContentLoaded", function () {
     // ✅ Select elements
     const logo = document.querySelector("#main-header .logo img");
     const navLinks = document.querySelectorAll("#main-header nav ul li a");
     const toggleSwitch = document.querySelector('#theme-checkbox');
     const themeIcon = document.querySelector(".theme-toggle img");
+    const nav = document.querySelector('#main-header nav');
+    const navUl = document.querySelector('#main-header nav ul');
+    const header = document.getElementById('main-header');
+
+    // ✅ Create and add hamburger menu button
+    const mobileMenuToggle = document.createElement('div');
+    mobileMenuToggle.className = 'mobile-menu-toggle';
+    mobileMenuToggle.innerHTML = `
+        <span></span>
+        <span></span>
+        <span></span>
+    `;
+    header.insertBefore(mobileMenuToggle, nav);
+
+    // ✅ Add mobile menu class to nav
+    navUl.classList.add('nav-menu');
 
     // ✅ Function to update logo based on theme
     function updateThemeVisuals(theme) {
@@ -40,57 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // ✅ Smooth hover effect for the logo
-    if (logo) {
-        logo.addEventListener("mouseenter", function () {
-            logo.style.transition = "transform 0.2s ease-out";
-            logo.style.transform = "scale(1.1)";
-        });
-
-        logo.addEventListener("mouseleave", function () {
-            logo.style.transition = "transform 0.2s ease-in";
-            logo.style.transform = "scale(1)";
-        });
-    }
-
-    // ✅ Smooth hover effect for menu links
-    navLinks.forEach(link => {
-        link.addEventListener("mouseenter", function () {
-            link.style.transition = "transform 0.2s ease-out";
-            link.style.transform = "scale(1.1)";
-        });
-
-        link.addEventListener("mouseleave", function () {
-            link.style.transition = "transform 0.2s ease-in";
-            link.style.transform = "scale(1)";
-        });
-    });
-});
-
-
-// Add this to your existing main.js file
-document.addEventListener("DOMContentLoaded", function () {
-    // Create hamburger menu element
-    const header = document.getElementById('main-header');
-    const nav = document.querySelector('#main-header nav');
-    const navUl = document.querySelector('#main-header nav ul');
-    
-    // Add mobile menu classes
-    navUl.classList.add('nav-menu');
-    
-    // Create mobile menu toggle button
-    const mobileMenuToggle = document.createElement('div');
-    mobileMenuToggle.className = 'mobile-menu-toggle';
-    mobileMenuToggle.innerHTML = `
-        <span></span>
-        <span></span>
-        <span></span>
-    `;
-    
-    // Insert toggle button
-    header.insertBefore(mobileMenuToggle, nav);
-    
-    // Toggle menu function
+    // ✅ Mobile menu toggle functionality
     mobileMenuToggle.addEventListener('click', function() {
         navUl.classList.toggle('active');
         
@@ -106,9 +73,8 @@ document.addEventListener("DOMContentLoaded", function () {
             spans[2].style.transform = 'none';
         }
     });
-    
-    // Close menu when clicking a link
-    const navLinks = document.querySelectorAll('#main-header nav ul li a');
+
+    // ✅ Close menu when clicking a link
     navLinks.forEach(link => {
         link.addEventListener('click', function() {
             if (window.innerWidth <= 768) {
@@ -119,16 +85,42 @@ document.addEventListener("DOMContentLoaded", function () {
                 spans[2].style.transform = 'none';
             }
         });
+        
+        // Hover effects for menu links
+        link.addEventListener("mouseenter", function () {
+            link.style.transition = "transform 0.2s ease-out";
+            link.style.transform = "scale(1.1)";
+        });
+
+        link.addEventListener("mouseleave", function () {
+            link.style.transition = "transform 0.2s ease-in";
+            link.style.transform = "scale(1)";
+        });
     });
-    
-    // Close menu on window resize if wider than mobile
+
+    // ✅ Close menu on window resize if wider than mobile
     window.addEventListener('resize', function() {
         if (window.innerWidth > 768) {
             navUl.classList.remove('active');
             const spans = document.querySelectorAll('.mobile-menu-toggle span');
-            spans[0].style.transform = 'none';
-            spans[1].style.opacity = '1';
-            spans[2].style.transform = 'none';
+            if (spans.length > 0) {
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            }
         }
     });
+
+    // ✅ Smooth hover effect for the logo
+    if (logo) {
+        logo.addEventListener("mouseenter", function () {
+            logo.style.transition = "transform 0.2s ease-out";
+            logo.style.transform = "scale(1.1)";
+        });
+
+        logo.addEventListener("mouseleave", function () {
+            logo.style.transition = "transform 0.2s ease-in";
+            logo.style.transform = "scale(1)";
+        });
+    }
 });

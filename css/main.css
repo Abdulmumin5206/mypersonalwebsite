@@ -131,6 +131,8 @@ html[data-theme="dark"] .theme-toggle .sun-icon {
     display: block;
 }
 
+/* Add this to your existing main.css file */
+
 /* ======== RESPONSIVE STYLES ======== */
 @media screen and (max-width: 768px) {
     /* Header adjustments for mobile */
@@ -138,6 +140,7 @@ html[data-theme="dark"] .theme-toggle .sun-icon {
         flex-direction: column;
         padding: 10px 20px;
         margin-top: 0;
+        position: relative;
     }
     
     /* Smaller logo on mobile */
@@ -145,25 +148,16 @@ html[data-theme="dark"] .theme-toggle .sun-icon {
         height: 80px;
     }
     
-    /* Navigation menu for mobile */
-    #main-header nav {
-        width: 100%;
-        margin-top: 10px;
-    }
-    
-    #main-header nav ul {
-        flex-direction: column;
-        gap: 15px;
-        padding: 10px 0;
-    }
-    
-    /* Create a hamburger menu for mobile */
+    /* Mobile menu toggle button styling */
     .mobile-menu-toggle {
         display: block;
         position: absolute;
-        top: 20px;
+        top: 25px;
         right: 20px;
         cursor: pointer;
+        z-index: 1001;
+        width: 30px;
+        height: 30px;
     }
     
     .mobile-menu-toggle span {
@@ -175,22 +169,61 @@ html[data-theme="dark"] .theme-toggle .sun-icon {
         transition: all 0.3s ease;
     }
     
+    /* Navigation menu for mobile */
+    #main-header nav {
+        width: 100%;
+    }
+    
     /* Hide desktop nav by default on mobile */
     .nav-menu {
         display: none;
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px 0;
+        background-color: var(--background-color);
         width: 100%;
-        padding-top: 10px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 0 0 5px 5px;
     }
     
     /* Show nav when active */
     .nav-menu.active {
+        display: flex;
+        animation: slideDown 0.3s ease forwards;
+    }
+    
+    @keyframes slideDown {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    #main-header nav ul li {
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+    }
+    
+    #main-header nav ul li a {
         display: block;
+        width: 100%;
+        padding: 5px 0;
+    }
+    
+    /* Theme toggle in mobile menu */
+    #main-header nav ul li:last-child {
+        margin-top: 10px;
     }
     
     /* Main content adjustments for mobile */
     main {
         padding: 15px;
-        margin-top: 0;
+        margin-top: 10px;
     }
     
     h1 {
@@ -212,5 +245,10 @@ html[data-theme="dark"] .theme-toggle .sun-icon {
     
     #main-header .logo img {
         height: 60px;
+    }
+    
+    .mobile-menu-toggle {
+        top: 20px;
+        right: 15px;
     }
 }
