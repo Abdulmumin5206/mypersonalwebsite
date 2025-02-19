@@ -1,28 +1,12 @@
-// Complete replacement for your main.js file
+// Copy this complete code into your main.js file
 document.addEventListener("DOMContentLoaded", function () {
-    // ✅ Select elements
+    // Theme toggle functionality (your existing code)
     const logo = document.querySelector("#main-header .logo img");
     const navLinks = document.querySelectorAll("#main-header nav ul li a");
     const toggleSwitch = document.querySelector('#theme-checkbox');
     const themeIcon = document.querySelector(".theme-toggle img");
-    const nav = document.querySelector('#main-header nav');
-    const navUl = document.querySelector('#main-header nav ul');
-    const header = document.getElementById('main-header');
 
-    // ✅ Create and add hamburger menu button
-    const mobileMenuToggle = document.createElement('div');
-    mobileMenuToggle.className = 'mobile-menu-toggle';
-    mobileMenuToggle.innerHTML = `
-        <span></span>
-        <span></span>
-        <span></span>
-    `;
-    header.insertBefore(mobileMenuToggle, nav);
-
-    // ✅ Add mobile menu class to nav
-    navUl.classList.add('nav-menu');
-
-    // ✅ Function to update logo based on theme
+    // Theme functions
     function updateThemeVisuals(theme) {
         if (logo) {
             logo.src = theme === 'dark' ? 'images/logo_white.svg' : 'images/logo.svg';
@@ -32,11 +16,9 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // ✅ Get saved theme or use system default
     const currentTheme = localStorage.getItem('theme') || 
                         (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
 
-    // ✅ Apply the theme and update visuals
     function applyTheme(theme) {
         document.documentElement.setAttribute('data-theme', theme);
         localStorage.setItem('theme', theme);
@@ -50,68 +32,13 @@ document.addEventListener("DOMContentLoaded", function () {
         applyTheme('light');
     }
 
-    // ✅ Toggle theme on switch change
     if (toggleSwitch) {
         toggleSwitch.addEventListener('change', function () {
             applyTheme(this.checked ? 'dark' : 'light');
         });
     }
 
-    // ✅ Mobile menu toggle functionality
-    mobileMenuToggle.addEventListener('click', function() {
-        navUl.classList.toggle('active');
-        
-        // Animate hamburger to X
-        const spans = this.querySelectorAll('span');
-        if (navUl.classList.contains('active')) {
-            spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
-            spans[1].style.opacity = '0';
-            spans[2].style.transform = 'rotate(-45deg) translate(7px, -7px)';
-        } else {
-            spans[0].style.transform = 'none';
-            spans[1].style.opacity = '1';
-            spans[2].style.transform = 'none';
-        }
-    });
-
-    // ✅ Close menu when clicking a link
-    navLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            if (window.innerWidth <= 768) {
-                navUl.classList.remove('active');
-                const spans = document.querySelectorAll('.mobile-menu-toggle span');
-                spans[0].style.transform = 'none';
-                spans[1].style.opacity = '1';
-                spans[2].style.transform = 'none';
-            }
-        });
-        
-        // Hover effects for menu links
-        link.addEventListener("mouseenter", function () {
-            link.style.transition = "transform 0.2s ease-out";
-            link.style.transform = "scale(1.1)";
-        });
-
-        link.addEventListener("mouseleave", function () {
-            link.style.transition = "transform 0.2s ease-in";
-            link.style.transform = "scale(1)";
-        });
-    });
-
-    // ✅ Close menu on window resize if wider than mobile
-    window.addEventListener('resize', function() {
-        if (window.innerWidth > 768) {
-            navUl.classList.remove('active');
-            const spans = document.querySelectorAll('.mobile-menu-toggle span');
-            if (spans.length > 0) {
-                spans[0].style.transform = 'none';
-                spans[1].style.opacity = '1';
-                spans[2].style.transform = 'none';
-            }
-        }
-    });
-
-    // ✅ Smooth hover effect for the logo
+    // Logo hover effect
     if (logo) {
         logo.addEventListener("mouseenter", function () {
             logo.style.transition = "transform 0.2s ease-out";
@@ -123,4 +50,46 @@ document.addEventListener("DOMContentLoaded", function () {
             logo.style.transform = "scale(1)";
         });
     }
+
+    // Nav links hover effect
+    navLinks.forEach(link => {
+        link.addEventListener("mouseenter", function () {
+            link.style.transition = "transform 0.2s ease-out";
+            link.style.transform = "scale(1.1)";
+        });
+
+        link.addEventListener("mouseleave", function () {
+            link.style.transition = "transform 0.2s ease-in";
+            link.style.transform = "scale(1)";
+        });
+    });
+
+    // MOBILE MENU IMPLEMENTATION
+    // 1. Create hamburger menu button if it doesn't exist
+    let mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const header = document.getElementById('main-header');
+    const nav = document.querySelector('#main-header nav');
+    const navUl = document.querySelector('#main-header nav ul');
+
+    if (!mobileMenuToggle) {
+        mobileMenuToggle = document.createElement('div');
+        mobileMenuToggle.className = 'mobile-menu-toggle';
+        mobileMenuToggle.innerHTML = `
+            <span></span>
+            <span></span>
+            <span></span>
+        `;
+        // Insert the button at the beginning of the header
+        header.insertBefore(mobileMenuToggle, header.firstChild);
+    }
+
+    // 2. Add necessary class to the nav menu
+    navUl.classList.add('nav-menu');
+
+    // 3. Toggle menu function - simplified and direct
+    mobileMenuToggle.addEventListener('click', function() {
+        console.log("Mobile menu clicked"); // Debug
+        navUl.classList.toggle('active');
+        this.classList.toggle('active');
+    });
 });
