@@ -131,9 +131,9 @@ html[data-theme="dark"] .theme-toggle .sun-icon {
     display: block;
 }
 
-/* Add this to your main.css file */
+/* Refined Mobile Menu Positioning - Add to your main.css */
 
-/* Mobile menu toggle button */
+/* Mobile menu toggle button - Refined positioning */
 .mobile-menu-toggle {
     display: none; /* Hidden by default on desktop */
     cursor: pointer;
@@ -152,41 +152,50 @@ html[data-theme="dark"] .theme-toggle .sun-icon {
     transition: all 0.3s ease;
 }
 
-/* Mobile Styles */
+/* Mobile Styles - Improved Alignments */
 @media screen and (max-width: 768px) {
-    /* Show hamburger on mobile */
-    .mobile-menu-toggle {
-        display: flex;
-        position: absolute;
-        top: 20px;
-        right: 20px;
-    }
-    
-    /* Header adjustments */
+    /* Header structure adjustments */
     #main-header {
         flex-direction: column;
-        padding: 15px;
+        align-items: center;
+        padding: 15px 20px;
         position: relative;
     }
     
+    /* Improved hamburger positioning relative to logo */
+    .mobile-menu-toggle {
+        display: flex;
+        position: absolute;
+        top: 50px; /* Aligned with the middle of the logo */
+        right: 20px;
+    }
+    
     /* Logo adjustments */
-    #main-header .logo img {
-        height: 70px;
+    #main-header .logo {
         margin-bottom: 10px;
+        display: flex;
+        justify-content: center;
+    }
+    
+    #main-header .logo img {
+        height: 80px;
+    }
+    
+    /* Navigation menu container */
+    #main-header nav {
+        width: 100%;
     }
     
     /* Hide nav by default on mobile */
     #main-header nav ul.nav-menu {
         display: none;
-        position: absolute;
-        top: 100px;
-        left: 0;
-        width: 100%;
         flex-direction: column;
+        width: 100%;
         background-color: var(--background-color);
-        padding: 20px 0;
+        padding: 15px 0;
         box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-        z-index: 1000;
+        border-radius: 5px;
+        margin-top: 10px;
     }
     
     /* Show menu when active */
@@ -194,11 +203,35 @@ html[data-theme="dark"] .theme-toggle .sun-icon {
         display: flex;
     }
     
-    /* Style menu items */
+    /* Consistent spacing and alignment for menu items */
     #main-header nav ul li {
         margin: 8px 0;
         width: 100%;
         text-align: center;
+        display: flex;
+        justify-content: center;
+    }
+    
+    /* Make all menu items (including theme toggle) have consistent styling */
+    #main-header nav ul li a,
+    #main-header nav ul li .theme-toggle {
+        padding: 8px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    /* Ensure theme toggle is centered like other menu items */
+    #main-header nav ul li:last-child {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .theme-toggle {
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
     }
     
     /* Hamburger animation when active */
@@ -222,11 +255,6 @@ html[data-theme="dark"] .theme-toggle .sun-icon {
     }
     
     .mobile-menu-toggle {
-        top: 15px;
-        right: 15px;
-    }
-    
-    #main-header nav ul.nav-menu {
-        top: 90px;
+        top: 40px; /* Adjusted for smaller logo */
     }
 }
