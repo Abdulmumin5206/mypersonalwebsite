@@ -167,7 +167,7 @@ html[data-theme="dark"] .theme-toggle .sun-icon {
         display: flex;
         position: absolute;
         top: 50px; /* Aligned with the middle of the logo */
-        right: 20px;
+        right: 30px;
     }
     
     /* Logo adjustments */
@@ -178,7 +178,7 @@ html[data-theme="dark"] .theme-toggle .sun-icon {
     }
     
     #main-header .logo img {
-        height: 80px;
+        height: 100px;
     }
     
     /* Navigation menu container */
@@ -195,7 +195,7 @@ html[data-theme="dark"] .theme-toggle .sun-icon {
         padding: 15px 0;
         box-shadow: 0 5px 10px rgba(0,0,0,0.1);
         border-radius: 5px;
-        margin-top: 10px;
+        margin-top: 20px;
     }
     
     /* Show menu when active */
@@ -251,10 +251,10 @@ html[data-theme="dark"] .theme-toggle .sun-icon {
 /* Extra small screens */
 @media screen and (max-width: 480px) {
     #main-header .logo img {
-        height: 60px;
+        height: 70px;
     }
     
     .mobile-menu-toggle {
-        top: 40px; /* Adjusted for smaller logo */
+        top: 100px; /* Adjusted for smaller logo */
     }
 }
