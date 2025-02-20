@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Contact Me</title>
+    <title>Get in Touch | The Engineer </title>
     
     <!-- Prevent flash of wrong theme -->
     <script>
@@ -35,7 +35,7 @@
                 <li><a href="about.html">About</a></li>
                 <li><a href="portfolio.html">Portfolio</a></li>
                 <li><a href="blog.html">Blog</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
                 <li>
                     <label class="theme-toggle" for="theme-checkbox">
                         <input type="checkbox" id="theme-checkbox" />
@@ -48,41 +48,97 @@
     </header>
 
     <main>
-        <h1>Contact Me</h1>
-        <p>Feel free to reach out through any of the following methods:</p>
+        <section class="contact-hero">
+            <h1>Let's Create Something Amazing Together!</h1>
+            
+        </section>
 
         <div class="contact-container">
             <!-- Left Side: Contact Information -->
             <div class="contact-info">
-                <h2>📧 Email</h2>
-                <p><a href="mailto:your@email.com">your@email.com</a></p>
+                <div class="info-card">
+                    <h2>How to Reach Me</h2>
+                    <div class="contact-method">
+                        <h3>📧 Email</h3>
+                        <p><a href="mailto:abdusattorovme@gmail.com" class="highlight-link">your@email.com</a></p>
+                    </div>
 
-                <h2>📱 Telegram</h2>
-                <p><a href="https://t.me/yourusername">@yourusername</a></p>
+                    <div class="contact-method">
+                        <h3>📱 Telegram</h3>
+                        <p><a href="https://t.me/Momin5206" class="highlight-link">@Momin5206</a></p>
+                    </div>
 
-                <!-- Social Media Icons -->
-                <h2>🔗 Connect with Me</h2>
-                <div class="social-icons">
-                    <a href="https://linkedin.com/in/yourprofile" target="_blank"><img src="icons/linkedin.svg" alt="LinkedIn"></a>
-                    <a href="https://instagram.com/yourusername" target="_blank"><img src="icons/instagram.svg" alt="Instagram"></a>
-                    <a href="https://twitter.com/yourusername" target="_blank"><img src="icons/twitter.svg" alt="Twitter"></a>
+                    
+                </div>
+
+                <!-- Social Media Section -->
+                <div class="social-section">
+                    <h2>Connect With Me</h2>
+                    
+                    <div class="social-icons">
+                        <a href="https://linkedin.com/in/yourprofile" target="_blank" aria-label="LinkedIn Profile"><img src="icons/linkedin.svg" alt="LinkedIn"></a>
+                        <a href="https://instagram.com/yourusername" target="_blank" aria-label="Instagram Profile"><img src="icons/instagram.svg" alt="Instagram"></a>
+                        <a href="https://twitter.com/yourusername" target="_blank" aria-label="Twitter Profile"><img src="icons/twitter.svg" alt="Twitter"></a>
+                    </div>
                 </div>
             </div>
 
-            <!-- Right Side: Contact Form -->
-            <div class="contact-form">
-                <h2>📩 Send Me a Message</h2>
-                <form id="contactForm">
-                    <input type="text" id="name" placeholder="Your Name" required>
-                    <input type="email" id="email" placeholder="Your Email" required>
-                    <textarea id="message" placeholder="Your Message" required></textarea>
-                    <button type="submit">Send Message</button>
-                </form>
+            <!-- Right Side: Enhanced Contact Form -->
+            <div class="contact-form-container">
+                <div class="contact-form">
+                    <h2>Talk2Me</h2>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" placeholder="Enter your name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" placeholder="Your email address" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <select id="subject">
+                                <option value="project">Project Inquiry</option>
+                                <option value="collaboration">Collaboration</option>
+                                <option value="question">General Question</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" placeholder="Describe your project, goals, or questions..." required></textarea>
+                        </div>
+                        
+                        <div class="form-submit">
+                            <button type="submit" class="submit-button">
+                                <span>Send Message</span>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M22 2L11 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </form>
+                </div>
                 
-                <p id="responseMessage"></p>
+                <div class="form-testimonial">
+                    <blockquote>
+                        "Working together was seamless from start to finish. The communication was clear, and the results exceeded my expectations."
+                        <cite>— Previous Client</cite>
+                    </blockquote>
+                </div>
             </div>
         </div>
+        
+       
     </main>
-    <!-- No duplicate scripts here - removed the second contact.js reference -->
+    
+    <footer>
+        <p>&copy; 2025 Abdulmumin. All rights reserved.</p>
+    </footer>
 </body>
 </html>
