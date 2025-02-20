@@ -1,12 +1,25 @@
-// Copy this complete code into your main.js file
 document.addEventListener("DOMContentLoaded", function () {
-    // Theme toggle functionality (your existing code)
+    // Preloader functionality
+    const preloader = document.querySelector(".preloader-overlay");
+    
+    window.onload = function () {
+        setTimeout(() => {
+            preloader.classList.add("preloader-hidden");
+            document.body.classList.add("loaded"); // Reveal page after load
+        }, 300);
+    };
+
+    // Fix scrollbar issues - Ensure it's present only when needed
+    if (document.body.classList.contains("contact-page")) {
+        document.documentElement.style.overflowY = "scroll";
+    }
+
+    // Theme toggle functionality
     const logo = document.querySelector("#main-header .logo img");
     const navLinks = document.querySelectorAll("#main-header nav ul li a");
     const toggleSwitch = document.querySelector('#theme-checkbox');
     const themeIcon = document.querySelector(".theme-toggle img");
 
-    // Theme functions
     function updateThemeVisuals(theme) {
         if (logo) {
             logo.src = theme === 'dark' ? 'images/logo_white.svg' : 'images/logo.svg';
@@ -65,7 +78,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // MOBILE MENU IMPLEMENTATION
-    // 1. Create hamburger menu button if it doesn't exist
     let mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
     const header = document.getElementById('main-header');
     const nav = document.querySelector('#main-header nav');
@@ -79,16 +91,12 @@ document.addEventListener("DOMContentLoaded", function () {
             <span></span>
             <span></span>
         `;
-        // Insert the button at the beginning of the header
         header.insertBefore(mobileMenuToggle, header.firstChild);
     }
 
-    // 2. Add necessary class to the nav menu
     navUl.classList.add('nav-menu');
 
-    // 3. Toggle menu function - simplified and direct
     mobileMenuToggle.addEventListener('click', function() {
-        console.log("Mobile menu clicked"); // Debug
         navUl.classList.toggle('active');
         this.classList.toggle('active');
     });

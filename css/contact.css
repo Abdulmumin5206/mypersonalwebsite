@@ -1,20 +1,35 @@
 /* ======== ENHANCED CONTACT PAGE STYLES ======== */
+/* Remove any potential gaps in the page structure */
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background: white; /* Light mode background */
+}
 
-/* Hero Section */
+[data-theme="dark"] body {
+    background: #0a0a0a; /* Dark mode background */
+}
+
+/* Hero Section - Remove any spacing that could cause gaps */
 .contact-hero {
     text-align: center;
-    padding: 60px 20px;
+    padding: 0 60px;
     max-width: 800px;
     margin: 0 auto;
     animation: fadeIn 0.8s ease-out;
+    position: relative; /* Add positioning context */
+    background: transparent;
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
+/* Move all spacing to the content instead of the container */
 .contact-hero h1 {
+    padding-top: 100px;
     font-size: 2.8rem;
     margin-bottom: 20px;
     background: linear-gradient(90deg, #000, #444);
@@ -32,6 +47,27 @@
     text-fill-color: transparent;
 }
 
+/* Ensure header area matches page background exactly */
+header {
+    background: transparent;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navigation container adjustments if needed */
+nav {
+    background: transparent;
+    margin: 0;
+    padding: 0;
+}
+
+/* Main content container */
+main {
+    background: transparent;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
 .subtitle {
     font-size: 1.2rem;
     line-height: 1.6;

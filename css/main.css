@@ -23,16 +23,19 @@
 /* ======== FIX HEADER SHIFT ON SCROLL ======== */
 html {
     overflow-y: scroll; /* Forces vertical scrollbar */
-    scrollbar-gutter: stable; /* Prevents layout shift */
+    scrollbar-gutter: auto; /* Prevents layout shift */
 }
+
+
 
 /* Prevent horizontal scrolling */
 body {
     width: 100%;
-    overflow-x: hidden;
     background-color: var(--background-color);
     color: var(--text-color);
     transition: background-color 0.3s ease, color 0.3s ease;
+
+    
 }
 
 /* ======== HEADER & MAIN STYLES ======== */
@@ -53,9 +56,14 @@ main {
     top: 0;
     position: relative;
     z-index: 1000;
-    background-color: var(--header-bg);
+    background-color: var(--background-color);
     box-shadow: none;
     transition: background-color 0.3s ease;
+    
+}
+
+main {
+    padding-top: 120px; /* Adjust according to header height */
 }
 
 /* LOGO STYLES */
@@ -263,3 +271,75 @@ html[data-theme="dark"] .theme-toggle .sun-icon {
         top: 100px; /* Adjusted for smaller logo */
     }
 }
+
+/* ======== GLOBAL ANIMATIONS ======== */
+
+/* Fade-In Effect */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Slide-Up Effect */
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Apply animations to elements */
+.animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+.animate-slide-up {
+    animation: slideUp 0.6s ease-out forwards;
+}
+
+/* Apply fade-in effect to all sections */
+section, main {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 0.8s ease-out forwards;
+    animation-delay: 0.2s;
+}
+
+/* ======== PRELOADER STYLES ======== */
+.preloader-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Dark transparent background */
+    backdrop-filter: blur(8px); /* Blur effect */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+}
+
+/* Hide preloader after page load */
+.preloader-hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Spinner Animation */
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
